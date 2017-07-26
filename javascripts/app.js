@@ -58,9 +58,17 @@ function goForward(command) {
   }
 }
 
+function executeCommands(commands, rover) {
+  for(var i = 0; i < commands.length; i++) {
+    var command = commands[i];
+
+    goRight(command);
+    goLeft(command);
+    goForward(command);
+  }
+
+}
 
 console.log(rover);
-goLeft("l");
-console.log(rover);
-goForward("f");
+executeCommands("rffrfl", rover);
 console.log(rover);
