@@ -30,10 +30,23 @@ function turnRight(rover){
 }
 
 function moveForward(rover){
-
+  if(rover.direction === "N"){
+    rover.y -= 1;
+  } else if (rover.direction == "E") {
+    rover.x += 1;
+  } else if (rover.direction === "S") {
+    rover.y -= 1;
+  } else if(rover.direction === "W") {
+    rover.x -= 1;
+  }
 }
 
+console.log(rover);
 turnRight(rover);
 console.log(rover);
 moveForward(rover);
-console.log
+console.log(rover);
+turnRight(rover);
+console.log(rover);
+moveForward(rover);
+console.log(rover);
