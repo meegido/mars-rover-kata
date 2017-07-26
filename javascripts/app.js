@@ -1,6 +1,7 @@
 var rover = {
   direction: "N",
-
+  x: 0,
+  y: 0
 }
 
 
@@ -34,4 +35,5 @@ function moveForward(rover){
 
 turnRight(rover);
 console.log(rover);
-turnLeft(rover);
+moveForward(rover);
+console.log
