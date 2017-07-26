@@ -17,13 +17,21 @@ function turnLeft(rover){
 }
 
 function turnRight(rover){
-
+  if(rover.direction === "N") {
+    rover.direction = "E";
+  } else if (rover.direction === "E") {
+    rover.direction = "S";
+  } else if (rover.direction === "S") {
+    rover.direction = "W";
+  } else if (rover.direction === "W") {
+    rover.direction = "N";
+  }
 }
 
 function moveForward(rover){
 
 }
 
-
-console.log(rover);
 turnRight(rover);
+console.log(rover);
+turnLeft(rover);
