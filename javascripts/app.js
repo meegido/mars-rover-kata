@@ -4,7 +4,6 @@ var rover = {
   y: 0
 }
 
-
 function turnLeft(rover){
   if(rover.direction === "N") {
     rover.direction = "W";
@@ -41,12 +40,27 @@ function moveForward(rover){
   }
 }
 
+function goRight(command) {
+  if(command === "r") {
+    turnRight(rover);
+  }
+}
+
+function goLeft(command) {
+  if(command === "l") {
+    turnLeft(rover);
+  }
+}
+
+function goForward(command) {
+  if(command === "f") {
+    moveForward(rover);
+  }
+}
+
+
 console.log(rover);
-turnRight(rover);
+goLeft("l");
 console.log(rover);
-moveForward(rover);
-console.log(rover);
-turnRight(rover);
-console.log(rover);
-moveForward(rover);
+goForward("f");
 console.log(rover);
