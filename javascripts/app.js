@@ -1,7 +1,7 @@
 var rover = {
   direction: "N",
-  x: 0,
-  y: 0
+  position: { x: 0, y: 0 },
+  travelLog: [this.position]
 }
 
 function turnLeft(rover){
@@ -30,13 +30,13 @@ function turnRight(rover){
 
 function moveForward(rover){
   if(rover.direction === "N"){
-    rover.y -= 1;
+    rover.position.y -= 1;
   } else if (rover.direction == "E") {
-    rover.x += 1;
+    rover.position.x += 1;
   } else if (rover.direction === "S") {
-    rover.y -= 1;
+    rover.position.y += 1;
   } else if(rover.direction === "W") {
-    rover.x -= 1;
+    rover.position.x -= 1;
   }
 }
 
@@ -61,7 +61,6 @@ function goForward(command) {
 function executeCommands(commands, rover) {
   for(var i = 0; i < commands.length; i++) {
     var command = commands[i];
-
     goRight(command);
     goLeft(command);
     goForward(command);
