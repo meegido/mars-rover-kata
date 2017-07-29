@@ -62,7 +62,7 @@ function logTrack() {
   rover.travelLog.push(rover.position, rover.direction);
 }
 
-function executeCommands(commands, rover) {
+function executeCommands(commands) {
   for(var i = 0; i < commands.length; i++) {
     var command = commands[i];
     goRight(command);
@@ -72,9 +72,5 @@ function executeCommands(commands, rover) {
   }
 }
 
-
-
-console.log(rover);
-executeCommands("rfff", rover);
-logTrack()
+executeCommands("rfff");
 console.log(rover.travelLog);
