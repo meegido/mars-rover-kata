@@ -87,9 +87,10 @@ function executeCommands(commands) {
     goRight(command);
     goLeft(command);
     goForward(command);
+    goBackward(command);
     logTrack();
   }
 }
 
-executeCommands("rfff");
+executeCommands("rrrlffb");
 console.log(rover.travelLog);
