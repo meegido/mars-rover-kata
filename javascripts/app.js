@@ -1,7 +1,7 @@
 var rover = {
   direction: "N",
   position: { x: 0, y: 0 },
-  travelLog: [this.position]
+  travelLog: [this.position, this.direction]
 }
 
 function turnLeft(rover){
@@ -58,16 +58,23 @@ function goForward(command) {
   }
 }
 
+function logTrack() {
+  rover.travelLog.push(rover.position, rover.direction);
+}
+
 function executeCommands(commands, rover) {
   for(var i = 0; i < commands.length; i++) {
     var command = commands[i];
     goRight(command);
     goLeft(command);
     goForward(command);
+    logTrack();
   }
-
 }
 
+
+
 console.log(rover);
-executeCommands("rffrfl", rover);
-console.log(rover);
+executeCommands("rrffrfl", rover);
+logTrack()
+console.log(rover.travelLog);
