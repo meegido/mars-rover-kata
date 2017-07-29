@@ -1,7 +1,8 @@
 var rover = {
   direction: "N",
-  position: { x: 0, y: 0 },
-  travelLog: [{x: 0, y: 0}, "N"]
+  x: 0,
+  y: 0,
+  travelLog: [[this.x, this.y], "N"]
 }
 
 function turnLeft(rover){
@@ -30,13 +31,25 @@ function turnRight(rover){
 
 function moveForward(rover){
   if(rover.direction === "N"){
-    rover.position.y -= 1;
+    rover.y -= 1;
   } else if (rover.direction === "E") {
-    rover.position.x += 1;
+    rover.x += 1;
   } else if (rover.direction === "S") {
-    rover.position.y += 1;
+    rover.y += 1;
   } else if(rover.direction === "W") {
-    rover.position.x -= 1;
+    rover.x -= 1;
+  }
+}
+
+function moveBackward(rover){
+  if(rover.direction === "N"){
+    rover.y += 1;
+  } else if (rover.direction === "E") {
+    rover.x -= 1;
+  } else if (rover.direction === "S") {
+    rover.y -= 1;
+  } else if(rover.direction === "W") {
+    rover.x += 1;
   }
 }
 
@@ -58,8 +71,14 @@ function goForward(command) {
   }
 }
 
+function goBackward(command) {
+  if(command === "b") {
+    moveBackward(rover);
+  }
+}
+
 function logTrack() {
-  rover.travelLog.push(rover.position, rover.direction);
+  rover.travelLog.push([rover.x, rover.y], rover.direction);
 }
 
 function executeCommands(commands) {
