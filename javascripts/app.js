@@ -1,7 +1,7 @@
 var rover = {
   direction: "N",
   position: { x: 0, y: 0 },
-  travelLog: [this.position, this.direction]
+  travelLog: [{x: 0, y: 0}, "N"]
 }
 
 function turnLeft(rover){
@@ -31,7 +31,7 @@ function turnRight(rover){
 function moveForward(rover){
   if(rover.direction === "N"){
     rover.position.y -= 1;
-  } else if (rover.direction == "E") {
+  } else if (rover.direction === "E") {
     rover.position.x += 1;
   } else if (rover.direction === "S") {
     rover.position.y += 1;
@@ -75,6 +75,6 @@ function executeCommands(commands, rover) {
 
 
 console.log(rover);
-executeCommands("rrffrfl", rover);
+executeCommands("rfff", rover);
 logTrack()
 console.log(rover.travelLog);
