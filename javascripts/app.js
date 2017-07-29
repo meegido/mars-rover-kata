@@ -5,7 +5,12 @@ var rover = {
   travelLog: [[this.x, this.y], "N"]
 }
 
-function turnLeft(rover){
+var world = {
+  horizontal: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9],
+  vertical: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+}
+
+function turnLeft(){
   if(rover.direction === "N") {
     rover.direction = "W";
   } else if (rover.direction === "W") {
@@ -17,7 +22,7 @@ function turnLeft(rover){
   }
 }
 
-function turnRight(rover){
+function turnRight(){
   if(rover.direction === "N") {
     rover.direction = "E";
   } else if (rover.direction === "E") {
@@ -29,7 +34,7 @@ function turnRight(rover){
   }
 }
 
-function moveForward(rover){
+function moveForward(){
   if(rover.direction === "N"){
     rover.y -= 1;
   } else if (rover.direction === "E") {
@@ -41,7 +46,7 @@ function moveForward(rover){
   }
 }
 
-function moveBackward(rover){
+function moveBackward(){
   if(rover.direction === "N"){
     rover.y += 1;
   } else if (rover.direction === "E") {
@@ -52,28 +57,52 @@ function moveBackward(rover){
     rover.x += 1;
   }
 }
+
+function insideWorld() {
+  for(var i = 0; i < world.horizontal.length; i++) {
+    var horizontalLimit = world.horizontal[i];
+
+    if(rover.x <= horizontalLimit) {
+      goForward() || goBackward();
+    } else {
+      console.log("Stop! Rover horizontal crash!!");
+    }
+  }
+
+  for(var j = 0; j < world.vertical.length; j++) {
+    var verticalLimit = world.vertical[j];
+
+    if(rover.y <= verticalLimit) {
+      goForward() || goBackward();
+    } else {
+      console.log("Stop! Rover vertical crash!!");
+    }
+  }
+
+}
+
 
 function goRight(command) {
   if(command === "r") {
-    turnRight(rover);
+    turnRight();
   }
 }
 
 function goLeft(command) {
   if(command === "l") {
-    turnLeft(rover);
+    turnLeft();
   }
 }
 
 function goForward(command) {
   if(command === "f") {
-    moveForward(rover);
+    moveForward();
   }
 }
 
 function goBackward(command) {
   if(command === "b") {
-    moveBackward(rover);
+    moveBackward();
   }
 }
 
@@ -89,8 +118,10 @@ function executeCommands(commands) {
     goForward(command);
     goBackward(command);
     logTrack();
+    insideWorld();
   }
 }
 
-executeCommands("rrrlffb");
-console.log(rover.travelLog);
+insideWorld();
+executeCommands("rlffffffffffffffffffffffff");
+console.log(rover);
